@@ -6,8 +6,8 @@ This project will focus on exploring cards that within the standard format of He
 
 # Goals
 
-- Thoroughly prepare the data such that it is ready for exploration and modeling (even though modeling is not an anticipated part of this project currently, I want to practice preparing data)
-
+- Thoroughly prepare so that it is ready for exploration and modeling
+    - I won't be creating any models for this project but I'd still like to prepare the data nonetheless
 - Explore the data to gather insights about the characteristics of the game's different class types
 
 # Note
