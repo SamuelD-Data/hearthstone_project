@@ -22,9 +22,6 @@ def get_hearth():
     # reading in rarities data and saving as DF
     rarities = pd.read_csv('rarities.csv')
 
-    # reading in set groups data and saving as DF
-    setgroups = pd.read_csv('setGroups.csv')
-
     # reading in card sets data and saving as DF
     sets = pd.read_csv('sets.csv')
 
@@ -34,5 +31,5 @@ def get_hearth():
     # reading in keywords data and saving as DF
     keywords = pd.read_csv('keywords.csv')
 
-    return cards, classes, mtypes, rarities, setgroups, sets, ctypes, keywords
+    return cards, classes, mtypes, rarities, sets, ctypes, keywords
 
