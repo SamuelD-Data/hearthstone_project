@@ -4,8 +4,10 @@ import numpy as np
 
 def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
     """
-    Accepts the 8 hearthstone DFs created by get_hearth function. 
+    Accepts the 7 hearthstone DFs created by get_hearth function. 
     Returns single, merged, fully prepared DF, ready for exploration. 
+    The following is the order the DFs should be listed in as arguments: 
+    cards, classes, mtypes, rarities, sets, ctypes, keywords
     """
     # lowercasing cards DF columns
     cards.columns = cards.columns.str.lower()
