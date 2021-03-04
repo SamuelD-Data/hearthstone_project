@@ -2,12 +2,12 @@
 import pandas as pd
 import numpy as np
 
-def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
+def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     """
     Accepts the 7 hearthstone DFs created by get_hearth function. 
     Returns single, merged, fully prepared DF, ready for exploration. 
     The following is the order the DFs should be listed in as arguments: 
-    cards, classes, mtypes, rarities, sets, ctypes, keywords
+    cards, classes, mtypes, rarities, ctypes, keywords
     """
     # lowercasing cards DF columns
     cards.columns = cards.columns.str.lower()
@@ -17,7 +17,7 @@ def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
     cards.name = cards.name.str.lower()
 
     # creating list of all DFs besides cards
-    df_list = [classes, mtypes, rarities, sets, ctypes, keywords]
+    df_list = [classes, mtypes, rarities, ctypes, keywords]
 
     # iterating through DFs
     # lowercasing all column names, dropping original name column, renaming slug to name column
@@ -72,14 +72,6 @@ def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
     # dropping column I no longer need
     df.drop(columns = ['rarityid'], inplace = True)
 
-    # replacing dashes with underscores in names
-    sets.name = sets.name.str.replace('-', '_')
-
-    # merging 'sets' df
-    df = pd.merge(df, sets[['id', 'name']], 
-                left_on = 'cardsetid', right_on = 'id', how="left", 
-                suffixes = (None, '_set'))
-
     # dropping column I no longer need
     df.drop(columns = ['cardsetid'], inplace = True)
 
@@ -129,11 +121,6 @@ def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
 
     # filling null text values with 'no effect'
     df["text"].fillna("no effect", inplace = True) 
-
-    # updating duels column so that cards that were allowed in duels have value of 1 and 0 otherwise
-    df['duels'] = np.where((df.duels == "{'relevant': True, 'constructed': True}"), 1, 0)
-
-    df.rename(columns={'duels':'in_duels'}, inplace=True)
 
     # converting nulls, aka non-minion cards to 'not a minion' type
     df['id_minion_tribe'] = np.where((df.id_minion_type.isnull() == True), 'not a minion', df.id_minion_type)
@@ -221,10 +208,6 @@ def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
     for level in rarities.name:
         df['is_' + level] = np.where((df.name_rarity == level), 1, 0)
 
-    # iterating through set names and creating a boolean column for each
-    for setname in sets.name:
-        df['is_' + setname] = np.where((df.name_set == setname), 1, 0)
-
     # iterating through card types and creating a boolean column for each
     for ctype in ctypes.name:
         df['is_' + ctype] = np.where((df.name_card_type == ctype), 1, 0)
@@ -264,7 +247,7 @@ def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
     df['name_word_count'] = df.name.apply(lambda x: len(str(x).split(' ')))
 
     # adjusting order of columns
-    df = df[['manacost', 'name', 'name_word_count', 'text', 'in_duels', 'has_child_ids', 'health', 'attack',
+    df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'health', 'attack',
         'durability', 'armor', 'id_prime_hero_class', 'name_prime_hero_class', 
         'id_second_hero_class', 'name_second_hero_class',
         'id_rarity', 'name_rarity', 'id_set', 'name_set', 'name_card_type',
@@ -279,11 +262,7 @@ def prep_hearth(cards, classes, mtypes, rarities, sets, ctypes, keywords):
         'is_demonhunter', 'is_druid', 'is_hunter', 'is_mage', 'is_paladin', 'is_priest',
         'is_rogue', 'is_shaman', 'is_warlock', 'is_warrior', 'is_neutral',
         'is_multiclass', 'is_common', 'is_free', 'is_rare',
-        'is_epic', 'is_legendary', 'is_madness_at_the_darkmoon_faire',
-        'is_scholomance_academy', 'is_demonhunter_initiate',
-        'is_ashes_of_outland', 'is_galakronds_awakening',
-        'is_descent_of_dragons', 'is_saviors_of_uldum', 'is_rise_of_shadows',
-        'is_classic', 'is_basic', 'is_hero', 'is_minion', 'is_spell',
+        'is_epic', 'is_legendary', 'is_hero', 'is_minion', 'is_spell',
         'is_weapon', 'is_murloc', 'is_demon', 'is_mech', 'is_elemental',
         'is_beast', 'is_totem', 'is_pirate', 'is_dragon', 'is_all',
         'is_no_tribe']]
