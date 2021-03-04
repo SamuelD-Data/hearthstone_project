@@ -4,7 +4,7 @@ import numpy as np
 
 def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     """
-    Accepts the 7 hearthstone DFs created by get_hearth function. 
+    Accepts the 6 hearthstone DFs created by get_hearth function. 
     Returns single, merged, fully prepared DF, ready for exploration. 
     The following is the order the DFs should be listed in as arguments: 
     cards, classes, mtypes, rarities, ctypes, keywords
@@ -47,7 +47,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
                 suffixes = (None, '_prime_hero_class'))
 
     # dropping columns I no longer need
-    df.drop(columns = ['primeclassid', 'classid'], inplace = True)
+    df.drop(columns = ['primeclassid', 'classid', 'duels'], inplace = True)
 
     # changing null values of minionTypeId for neutral minions to -1
     df['miniontypeid'] = np.where((df.miniontypeid.isnull() == True) & (df.cardtypeid == 4), -1, df.miniontypeid)
@@ -250,7 +250,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'health', 'attack',
         'durability', 'armor', 'id_prime_hero_class', 'name_prime_hero_class', 
         'id_second_hero_class', 'name_second_hero_class',
-        'id_rarity', 'name_rarity', 'id_set', 'name_set', 'name_card_type',
+        'id_rarity', 'name_rarity', 'name_card_type',
         'name_minion_tribe', 'has_taunt', 'has_spellpower', 'has_divine_shield',
         'has_charge', 'has_secret', 'has_stealth', 'has_battlecry',
         'has_freeze', 'has_windfury', 'has_deathrattle', 'has_combo',

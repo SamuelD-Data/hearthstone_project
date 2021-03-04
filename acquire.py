@@ -7,7 +7,7 @@ warnings.filterwarnings("ignore")
 
 def get_hearth():
     """
-    No argument needed. Acquires data and returns as DFs, 7 in total.
+    No argument needed. Acquires data and returns as DFs, 6 in total.
     DFs will be returned in the following order:
     cards, classes, mtypes, rarities, sets, ctypes, keywords
     """
