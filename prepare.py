@@ -133,7 +133,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     df.childids.fillna("no_childid", inplace = True) 
 
     # creating list of column names
-    hada = ['health', 'attack', 'durability', 'armor']
+    hada = ['health', 'attack']
 
     # iterating through columns filling nulls within each
     for att in hada:
@@ -248,7 +248,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
 
     # adjusting order of columns
     df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'health', 'attack',
-        'durability', 'armor', 'id_prime_hero_class', 'name_prime_hero_class', 
+         'id_prime_hero_class', 'name_prime_hero_class', 
         'id_second_hero_class', 'name_second_hero_class',
         'id_rarity', 'name_rarity', 'name_card_type',
         'name_minion_tribe', 'has_taunt', 'has_spellpower', 'has_divine_shield',
