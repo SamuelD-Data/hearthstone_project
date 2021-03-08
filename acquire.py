@@ -7,9 +7,9 @@ warnings.filterwarnings("ignore")
 
 def get_hearth():
     """
-    No argument needed. Acquires data and returns as DFs, 6 in total.
+    No argument needed. Acquires data and returns as DFs, 5 in total.
     DFs will be returned in the following order:
-    cards, classes, mtypes, rarities, sets, ctypes, keywords
+    cards, classes, mtypes, ctypes, keywords
     """
 
     # reading in card data and saving as DF
@@ -21,14 +21,11 @@ def get_hearth():
     # reading in minion types data and saving as DF
     mtypes = pd.read_csv('minionTypes.csv')
 
-    # reading in rarities data and saving as DF
-    rarities = pd.read_csv('rarities.csv')
-
     # reading in types data and saving as DF
     ctypes = pd.read_csv('types.csv')
 
     # reading in keywords data and saving as DF
     keywords = pd.read_csv('keywords.csv')
 
-    return cards, classes, mtypes, rarities, ctypes, keywords
+    return cards, classes, mtypes, ctypes, keywords
 

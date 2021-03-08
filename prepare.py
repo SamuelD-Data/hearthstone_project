@@ -2,12 +2,12 @@
 import pandas as pd
 import numpy as np
 
-def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
+def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     """
-    Accepts the 6 hearthstone DFs created by get_hearth function. 
+    Accepts the 5 hearthstone DFs created by get_hearth function. 
     Returns single, merged, fully prepared DF, ready for exploration. 
     The following is the order the DFs should be listed in as arguments: 
-    cards, classes, mtypes, rarities, ctypes, keywords
+    cards, classes, mtypes, ctypes, keywords
     """
     # lowercasing cards DF columns
     cards.columns = cards.columns.str.lower()
@@ -17,7 +17,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     cards.name = cards.name.str.lower()
 
     # creating list of all DFs besides cards
-    df_list = [classes, mtypes, rarities, ctypes, keywords]
+    df_list = [classes, mtypes, ctypes, keywords]
 
     # iterating through DFs
     # lowercasing all column names, dropping original name column, renaming slug to name column
@@ -63,11 +63,6 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
 
     # dropping column I no longer need
     df.drop(columns = ['miniontypeid'], inplace = True)
-
-    # merging 'rarities' df
-    df = pd.merge(df, rarities[['id', 'name']], 
-                left_on = 'rarityid', right_on = 'id', how="left", 
-                suffixes = (None, '_rarity'))
 
     # dropping column I no longer need
     df.drop(columns = ['rarityid'], inplace = True)
@@ -203,11 +198,6 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     # dropping column I no longer need
     df.drop(columns = 'childids', inplace = True)
 
-    # iterating through levels of rarity (common, rare, epic, etc)
-    # creating boolean column for each
-    for level in rarities.name:
-        df['is_' + level] = np.where((df.name_rarity == level), 1, 0)
-
     # iterating through card types and creating a boolean column for each
     for ctype in ctypes.name:
         df['is_' + ctype] = np.where((df.name_card_type == ctype), 1, 0)
@@ -249,8 +239,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
     # adjusting order of columns
     df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'health', 'attack',
          'id_prime_hero_class', 'name_prime_hero_class', 
-        'id_second_hero_class', 'name_second_hero_class',
-        'id_rarity', 'name_rarity', 'name_card_type',
+        'id_second_hero_class', 'name_second_hero_class', 'name_card_type',
         'name_minion_tribe', 'has_taunt', 'has_spellpower', 'has_divine_shield',
         'has_charge', 'has_secret', 'has_stealth', 'has_battlecry',
         'has_freeze', 'has_windfury', 'has_deathrattle', 'has_combo',
@@ -261,8 +250,7 @@ def prep_hearth(cards, classes, mtypes, rarities, ctypes, keywords):
         'has_sidequest', 'has_corrupt', 'has_start_of_game',
         'is_demonhunter', 'is_druid', 'is_hunter', 'is_mage', 'is_paladin', 'is_priest',
         'is_rogue', 'is_shaman', 'is_warlock', 'is_warrior', 'is_neutral',
-        'is_multiclass', 'is_common', 'is_free', 'is_rare',
-        'is_epic', 'is_legendary', 'is_hero', 'is_minion', 'is_spell',
+        'is_multiclass', 'is_hero', 'is_minion', 'is_spell',
         'is_weapon', 'is_murloc', 'is_demon', 'is_mech', 'is_elemental',
         'is_beast', 'is_totem', 'is_pirate', 'is_dragon', 'is_all',
         'is_no_tribe']]
