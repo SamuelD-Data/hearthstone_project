@@ -145,14 +145,15 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
         (df.namekeywordid4_name == kw) |
         (df.namekeywordid5_name == kw), 1, 0)
         
+    # creating column that holds all keyword names for each card
+    df['allkws'] = df.namekeywordid1_name + ' ' + df.namekeywordid2_name + ' ' + df.namekeywordid3_name + ' ' + df.namekeywordid4_name + ' ' + df.namekeywordid5_name
+    
     # creating empty list
     key_word_col_drop = []
 
     # iterating through columns in df and creating list of columns to drop
     for col in df.columns:
-        if col == 'keywordids':
-            continue
-        elif 'keywordid' in col:
+        if 'keywordid' in col:
             key_word_col_drop.append(col)
             
     # dropping columns
@@ -241,7 +242,7 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     # adjusting order of columns
     df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'health', 'attack',
          'id_prime_hero_class', 'name_prime_hero_class', 
-        'id_second_hero_class', 'name_second_hero_class', 'keywordids', 'name_card_type',
+        'id_second_hero_class', 'name_second_hero_class', 'allkws', 'name_card_type',
         'name_minion_tribe', 'has_taunt', 'has_spellpower', 'has_divine_shield',
         'has_charge', 'has_secret', 'has_stealth', 'has_battlecry',
         'has_freeze', 'has_windfury', 'has_deathrattle', 'has_combo',
