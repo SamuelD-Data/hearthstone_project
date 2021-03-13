@@ -154,7 +154,7 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     df.namekeywordid5_name.fillna(' ', inplace = True)
     
     # creating column that holds all keyword names for each card
-    df['allkws'] = df.namekeywordid1_name + ' ' + df.namekeywordid2_name + ' ' + df.namekeywordid3_name + ' ' + 
+    df['allkws'] = df.namekeywordid1_name + ' ' + df.namekeywordid2_name + ' ' + df.namekeywordid3_name + ' ' +\
     df.namekeywordid4_name + ' ' + df.namekeywordid5_name
 
     # creating empty list
@@ -237,8 +237,7 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     dcc2 = df[df.name_second_hero_class != 'monoclass']
 
     # swapping primary and secondary hero class values
-    dcc2.name_prime_hero_class, dcc2.name_second_hero_class, dcc2.id_prime_hero_class, dcc2.id_second_hero_class = 
-    dcc.name_second_hero_class, dcc.name_prime_hero_class, dcc.id_second_hero_class, dcc.id_prime_hero_class
+    dcc2.name_prime_hero_class, dcc2.name_second_hero_class, dcc2.id_prime_hero_class, dcc2.id_second_hero_class = dcc.name_second_hero_class, dcc.name_prime_hero_class, dcc.id_second_hero_class, dcc.id_prime_hero_class
 
     # adding new rows to main df
     df = pd.concat([df, dcc2])
