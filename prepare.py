@@ -35,7 +35,8 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     # if card is of one class, this will reflect its sole class
     # if card is dual, this will reflect the 1st of the two classes in the multiClassIds column
     # necessary since dual class cards erroneously hold the 'neutral' class value in their primary class id 
-    cards['primeclassid'] = np.where((cards.multiclassids.str.contains(' ')), cards["multiclassids"].str.split(" ", expand = True)[0], cards.classid)
+    cards['primeclassid'] = np.where((cards.multiclassids.str.contains(' ')), cards["multiclassids"].str.split(" ", expand =
+    True)[0], cards.classid)
 
     # converting key columns to make all value data types match
     cards.primeclassid = cards.primeclassid.astype(str)
@@ -144,10 +145,18 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
         (df.namekeywordid3_name == kw) |
         (df.namekeywordid4_name == kw) |
         (df.namekeywordid5_name == kw), 1, 0)
-        
-    # creating column that holds all keyword names for each card
-    df['allkws'] = df.namekeywordid1_name + ' ' + df.namekeywordid2_name + ' ' + df.namekeywordid3_name + ' ' + df.namekeywordid4_name + ' ' + df.namekeywordid5_name
+
+    # filling nulls in temporary columns with spaces to allow concatenation in next section
+    df.namekeywordid1_name.fillna(' ', inplace = True)
+    df.namekeywordid2_name.fillna(' ', inplace = True)
+    df.namekeywordid3_name.fillna(' ', inplace = True)
+    df.namekeywordid4_name.fillna(' ', inplace = True)
+    df.namekeywordid5_name.fillna(' ', inplace = True)
     
+    # creating column that holds all keyword names for each card
+    df['allkws'] = df.namekeywordid1_name + ' ' + df.namekeywordid2_name + ' ' + df.namekeywordid3_name + ' ' + 
+    df.namekeywordid4_name + ' ' + df.namekeywordid5_name
+
     # creating empty list
     key_word_col_drop = []
 
@@ -155,7 +164,7 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     for col in df.columns:
         if 'keywordid' in col:
             key_word_col_drop.append(col)
-            
+        
     # dropping columns
     df.drop(columns = key_word_col_drop, inplace = True)
 
@@ -228,7 +237,8 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     dcc2 = df[df.name_second_hero_class != 'monoclass']
 
     # swapping primary and secondary hero class values
-    dcc2.name_prime_hero_class, dcc2.name_second_hero_class, dcc2.id_prime_hero_class, dcc2.id_second_hero_class = dcc.name_second_hero_class, dcc.name_prime_hero_class, dcc.id_second_hero_class, dcc.id_prime_hero_class
+    dcc2.name_prime_hero_class, dcc2.name_second_hero_class, dcc2.id_prime_hero_class, dcc2.id_second_hero_class = 
+    dcc.name_second_hero_class, dcc.name_prime_hero_class, dcc.id_second_hero_class, dcc.id_prime_hero_class
 
     # adding new rows to main df
     df = pd.concat([df, dcc2])
