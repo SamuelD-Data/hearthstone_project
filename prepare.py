@@ -247,9 +247,12 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
 
     # counting words in card names and adding as variable
     df['name_word_count'] = df.name.apply(lambda x: len(str(x).split(' ')))
+    
+    # counting number of chilids and adding as variable
+    df['childid_count'] = np.where((df.childids != 'no_childid'), df['childids'].str.split().str.len(), 0)
 
     # adjusting order of columns
-    df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'childids', 'health', 'attack',
+    df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'childids', 'childid_count', 'health', 'attack',
          'id_prime_hero_class', 'name_prime_hero_class', 
         'id_second_hero_class', 'name_second_hero_class', 'allkws', 'name_card_type',
         'name_minion_tribe', 'has_taunt', 'has_spellpower', 'has_divine_shield',
