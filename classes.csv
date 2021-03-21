@@ -1,0 +1,12 @@
+slug,id,name,cardId
+demonhunter,14,Demon Hunter,56550.0
+druid,2,Druid,274.0
+hunter,3,Hunter,31.0
+mage,4,Mage,637.0
+paladin,5,Paladin,671.0
+priest,6,Priest,813.0
+rogue,7,Rogue,930.0
+shaman,8,Shaman,1066.0
+warlock,9,Warlock,893.0
+warrior,10,Warrior,7.0
+neutral,12,Neutral,

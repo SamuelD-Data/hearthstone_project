@@ -1,0 +1,38 @@
+id,slug,name,refText,text
+1,taunt,Taunt,Enemies must attack minions that have Taunt.,Enemies must attack this minion.
+2,spellpower,Spell Damage,Your spells deal extra damage.,Your spell cards deal extra damage.
+3,divine-shield,Divine Shield,"The first time a Shielded minion takes damage, ignore it.","The first time this minion takes damage, ignore it."
+4,charge,Charge,Can attack immediately.,Can attack immediately.
+5,secret,Secret,Hidden until a specific action occurs on your opponent's turn.,Hidden until a specific action occurs on your opponent's turn.
+6,stealth,Stealth,Can't be attacked or targeted until it attacks.,Can't be attacked or targeted until it attacks.
+8,battlecry,Battlecry,Does something when you play it from your hand.,Does something when you play it from your hand.
+10,freeze,Freeze,Frozen characters lose their next attack.,Frozen characters lose their next attack.
+11,windfury,Windfury,Can attack twice each turn.,Can attack twice each turn.
+12,deathrattle,Deathrattle,Does something when it dies.,Does something when it dies.
+13,combo,Combo,A bonus if you already played a card this turn.,A bonus if you already played a card this turn.
+14,overload,Overload,Cards with Overload limit your mana next turn.,You have X less mana next turn.
+15,silence,Silence,Removes all card text and enchantments.,Removes all card text and enchantments.
+16,counter,Counter,A card that is Countered has no effect.,A card that is Countered has no effect.
+17,immune,Immune,Immune characters can't be damaged.,Can't be damaged.
+19,spare-part,Spare Parts,Spare Parts are 1-Cost spells with minor effects.,Spare Parts are 1-Cost spells with minor effects.
+20,inspire,Inspire,Does something after you use your Hero Power.,Does something after you use your Hero Power.
+21,discover,Discover,Choose one of three cards to add to your hand.,Choose one of three cards to add to your hand.
+31,quest,Quest,Starts in your hand. Complete for a reward.,Starts in your hand. Complete for a reward.
+32,poisonous,Poisonous,Destroy any minion damaged by this.,Destroy any minion damaged by this.
+34,adapt,Adapt,Choose one of 3 bonuses.,Choose one of 3 bonuses.
+38,lifesteal,Lifesteal,Damage dealt also heals your hero.,Damage dealt also heals your hero.
+39,recruit,Recruit,Summon a minion from your deck.,Summon a minion from your deck.
+52,echo,Echo,Repeatable the turn you play this. Copies can't cost less than (1).,Repeatable the turn you play this. Copies can't cost less than (1).
+53,rush,Rush,Can attack minions immediately.,Can attack minions immediately.
+61,overkill,Overkill,Deal excess damage on your turn for a bonus.,Deal excess damage on your turn for a bonus.
+66,modular,Magnetic,Play this to the left of a Mech to fuse them together!,Play this to the left of a Mech to fuse them together!
+71,evilzug,Lackey,Lackeys are 1-Cost minions with Battlecries.,Lackeys are 1-Cost minions with Battlecries.
+76,twinspell,Twinspell,Can be cast twice.,Can be cast twice.
+77,mega-windfury,Mega-Windfury,Can attack four times each turn.,Can attack four times each turn.
+78,reborn,Reborn,Resurrects with 1 Health the first time it dies.,Resurrects with 1 Health the first time it dies.
+79,empower,Invoke,Use Galakrond's Power.,Use Galakrond's Power.
+86,outcast,Outcast,A bonus if played as the left- or right-most card in hand.,A bonus if played as the left- or right-most card in hand.
+88,spellburst,Spellburst,A one-time effect after you cast a spell.,A one-time effect after you cast a spell.
+89,sidequest,Sidequest,Complete for a reward.,Complete for a reward.
+91,corrupt,Corrupt,Upgrades in hand after you play a card that costs more.,Upgrades in hand after you play a card that costs more.
+92,start-of-combat,Start of Combat,Does something at the start of the Combat Phase.,Does something at the start of the Combat Phase.
