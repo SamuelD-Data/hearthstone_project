@@ -6,11 +6,9 @@ Hearthstone: Heroes of Warcraft is an online card game created by Blizzard, Inc.
 
 - This project will focus on exploring cards that within the standard format of Hearthstone as of February 2021. 
 
-- This project is currently on hold and will remain so until further notice.
-
 # Goals
 
-- Explore the data to gather insights about the characteristics of the game's different class types and their relationships with each other in the current format
+- Explore the data to gather insights about the unique and uncommon traits of the game's different class types
 
 # Purpose
 
