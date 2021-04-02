@@ -121,7 +121,7 @@ filtered_text - Column that holds values from 'text' column, with some changes m
     - Make extensive use of plotting with a wide array of plot types
 
 Conclusion
-    - Summarize operations and findings from project
+    - Summarize findings from project
 
 # How to Reproduce
 
@@ -131,3 +131,99 @@ Download data into your working directory.
 Install acquire.py and prepare.py into your working directory.
 
 Run the jupyter notebook.
+
+# Conclusion
+
+After exploring the data I've made the following observations that relate to the identities of each hero class. 
+
+
+__Demonhunter__
+- Only class besides neutral with more minions than spells
+- Highest average manacost weapons
+- Highest average minion attack on average
+- Only class with higher attack than health on average 
+- One of two classes with notably small gap between average minion health and attack (other is rogue)
+- One of two classes with very balanced average attack, health, and manacost among minions (other is rogue)
+- "Demon" is most common minion tribe (outside of no_tribe)
+- Only class with "outcast" keyword (outside of multiclass cards)
+- Least amount of childids overall
+- Shares multiclass cards with hunter and warlock
+
+__Druid__
+- One of only two classes with more spells than minions (other is warlock)
+- Highest average manacost cards among all non-neutral classes
+- Highest average manacost minions
+- Highest average minion health
+- Minions have very high health and manacost compared to attack
+- One of three classes where "Beast" is most common minion tribe besides "no_tribe" (others are neutral and hunter)
+- Only class with taunt as most common keyword
+- Shares multiclass cards with shaman and hunter
+
+__Hunter__
+- One of three classes where "Beast" is most common minion tribe besides "no_tribe" (others are neutral and druid)
+- Only class with both "secret" and "death rattle" in top 3 keywords
+- Shares multiclass cards with druid and demon hunter
+
+__Mage__ 
+- Lowest minion attack on average
+- One of two classes where "Elemental" is most common minion tribe outside of no_tribe (other is shaman)
+- Only class with "discover" in top 3 keywords
+- Shares multiclass cards with shaman and rogue
+
+
+__Neutral__
+- Has no spells
+- Only class besides demonhunter with more minions than spells
+- Highest manacost cards on average for all card types combined
+- Lowest average weapon manacost
+- Ratio of no_tribe to any other individual minion tribe is much more unbalanced than other classes
+- One of three classes where "Beast" is most common minion tribe besides "no_tribe" (others are Druid and Hunter)
+- Has most child ids overall
+
+
+__Paladin__
+- Most words on average in card names
+- One of two classes where "Dragon" is most common minion tribe outside of no_tribe (other is priest)
+- Only class with "divine shield" in top 3 keywords
+- Shares multiclass cards with priest and warrior
+
+
+__Priest__
+- One of two classes where "Dragon" is most common minion tribe outside of no_tribe (other is paladin)
+- Shares multiclass cards with paladin and warlock
+
+__Rogue__
+- Lowest average manacost minions 
+- Lowest average manacost spells 
+- Lowest average manacost cards overall
+- Lowest average word count in card names
+- Lowest average minion health
+- One of two classes with notably small gap between average minion health and attack (other is demonhunter)
+- One of two classes with very balanced average attack, health, and manacost among minions (other is demonhunter)
+- "Pirate" is most common minion tribe (outside of no_tribe)
+- Only class with "combo" keyword (outside of multiclass cards)
+- Only class with "combo" in top 3 keywords
+- Only class with "stealth" in top 3 keywords
+- Shares multiclass cards with warrior and mage
+
+
+__Shaman__
+- One of two classes where "Elemental" is most common minion tribe outside of no_tribe (other is mage)
+- Only class with "overload" keyword (outside of multiclass cards)
+
+
+__Warlock__
+- One of only two classes with more spells than minions (other is druid)
+- "Demon" is most common minion tribe
+- Only class to have a tribal minion type (demon) outnumber no_tribe minions
+- Shares multiclass cards with priest and demonhunter
+
+
+__Warrior__
+- Lowest average manacost weapons
+- Largest gap between average minion health and attack 
+- "Mech" is most common minion tribe (outside of no_tribe)
+- Shares multiclass cards with paladin and rogue
+
+
+Note that some classes such as Priest, Hunter, and Shaman have almost no identified unique or uncommon traits. Further exploration may yield more findings for these, and other classes like them. 
