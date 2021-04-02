@@ -129,7 +129,7 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     df.childids.fillna("no_childid", inplace = True) 
 
     # creating list of column names
-    hada = ['health', 'attack']
+    hada = ['health', 'attack', 'durability', 'armor']
 
     # iterating through columns filling nulls within each
     for att in hada:
@@ -207,9 +207,6 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     # contains ',' will suffice since only cards with a comma in this value have childids
     df['has_child_ids'] = np.where((df.childids.str.contains(',')), 1, 0)
 
-    # dropping column I no longer need
-    df.drop(columns = 'childids', inplace = True)
-
     # iterating through card types and creating a boolean column for each
     for ctype in ctypes.name:
         df['is_' + ctype] = np.where((df.name_card_type == ctype), 1, 0)
@@ -250,10 +247,14 @@ def prep_hearth(cards, classes, mtypes, ctypes, keywords):
     
     # counting number of chilids and adding as variable
     df['childid_count'] = np.where((df.childids != 'no_childid'), df['childids'].str.split().str.len(), 0)
+    
+    # updating attack values to correct values
+    df.at[806,'attack'] = 3
+    df.at[921,'attack'] = 0
 
     # adjusting order of columns
     df = df[['manacost', 'name', 'name_word_count', 'text', 'has_child_ids', 'childids', 'childid_count', 'health', 'attack',
-         'id_prime_hero_class', 'name_prime_hero_class', 
+         'durability', 'id_prime_hero_class', 'name_prime_hero_class', 
         'id_second_hero_class', 'name_second_hero_class', 'allkws', 'name_card_type',
         'name_minion_tribe', 'has_taunt', 'has_spellpower', 'has_divine_shield',
         'has_charge', 'has_secret', 'has_stealth', 'has_battlecry',
