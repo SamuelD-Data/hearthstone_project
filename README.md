@@ -134,7 +134,6 @@ Run the jupyter notebook.
 
 After exploring the data I've made the following observations that relate to the identities of each hero class. 
 
-
 __Demonhunter__
 - Only class besides neutral with more minions than spells
 - Highest average manacost weapons
@@ -159,6 +158,7 @@ __Druid__
 
 __Hunter__
 - One of three classes where "Beast" is most common minion tribe besides "no_tribe" (others are neutral and druid)
+- Only class that has equal average weapon attack and durability 
 - Only class with both "secret" and "death rattle" in top 3 keywords
 - Shares multiclass cards with druid and demon hunter
 
@@ -174,6 +174,9 @@ __Neutral__
 - Only class besides demonhunter with more minions than spells
 - Highest manacost cards on average for all card types combined
 - Lowest average weapon manacost
+- Highest average weapon durability
+- Lowest average weapon attack
+- Largest gap between average weapon attack and durability
 - Ratio of no_tribe to any other individual minion tribe is much more unbalanced than other classes
 - One of three classes where "Beast" is most common minion tribe besides "no_tribe" (others are Druid and Hunter)
 - Has most child ids overall
@@ -183,8 +186,8 @@ __Paladin__
 - Most words on average in card names
 - One of two classes where "Dragon" is most common minion tribe outside of no_tribe (other is priest)
 - Only class with "divine shield" in top 3 keywords
+- Smallest gap between average weapon attack and durability among classes with a difference between these values
 - Shares multiclass cards with priest and warrior
-
 
 __Priest__
 - One of two classes where "Dragon" is most common minion tribe outside of no_tribe (other is paladin)
@@ -208,6 +211,10 @@ __Rogue__
 __Shaman__
 - One of two classes where "Elemental" is most common minion tribe outside of no_tribe (other is mage)
 - Only class with "overload" keyword (outside of multiclass cards)
+- Highest average weapon durabilitiy of all non-neutral classes
+- Lowest average weapon attack among all non-neutral classes
+- Largest gap between average weapon attack and durability out of all non-neutral classes
+- Shares multiclass cards with mage and druid
 
 
 __Warlock__
@@ -219,9 +226,8 @@ __Warlock__
 
 __Warrior__
 - Lowest average manacost weapons
+- Lowest average weapon durability
+- Highest average weapon attack
 - Largest gap between average minion health and attack 
 - "Mech" is most common minion tribe (outside of no_tribe)
 - Shares multiclass cards with paladin and rogue
-
-
-Note that some classes such as Priest, Hunter, and Shaman have almost no identified unique or uncommon traits. Further exploration may yield more findings for these, and other classes like them. 
